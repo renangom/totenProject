@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +6,7 @@
       max-width: 100%;
     }
   </style>
+  <link rel="stylesheet" href="./style.css"/>
 </head>
 <body>
   <div class="titulo">
@@ -42,21 +42,40 @@
       const quizContainer = document.getElementById('quiz-container');
 
       perguntas.forEach((pergunta, i) => {
+        const inputRadioName = `pergunta${i}`;
         const divPergunta = document.createElement('div');
         divPergunta.classList.add('pergunta');
 
         const tituloPergunta = document.createElement('p');
         tituloPergunta.innerHTML = pergunta.pergunta;
 
-        const divAlternativas = document.createElement('div');
+        const divAlternativas = document.createElement('ul'); // Alterado de div para ul
         divAlternativas.classList.add('li');
 
         pergunta.alternativas.forEach((alternativa, j) => {
           const inputRadio = document.createElement('input');
           const liAlternativa = document.createElement('li');
 
+          const inputRadioId = `radio${i}${j}`;
+
+          liAlternativa.addEventListener('click', function () {
+            // Marca o input do tipo rádio correspondente ao li clicado
+            const inputRadio = document.getElementById(inputRadioId);
+            if (inputRadio) {
+              // Desmarca todos os outros inputs de rádio da mesma pergunta
+              const radios = document.querySelectorAll(`input[name="${inputRadioName}"]`);
+              radios.forEach(radio => (radio.checked = false));
+
+              inputRadio.checked = true;
+              console.log(`Alternativa clicada: ${alternativa.texto}`);
+            }
+          });
+
           inputRadio.setAttribute('type', 'radio');
+          inputRadio.setAttribute('id', inputRadioId);
+          inputRadio.setAttribute('name', inputRadioName); // Define o nome para agrupar os inputs
           liAlternativa.setAttribute('id', `p${i}a${j}`);
+          liAlternativa.setAttribute('for', inputRadioId);
           liAlternativa.innerHTML = alternativa.texto;
 
           divAlternativas.appendChild(inputRadio);
@@ -70,6 +89,8 @@
     }
 
     populatePerguntas();
+
+
   </script>
 </body>
 </html>
