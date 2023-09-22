@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  .header {
+    background-image: url('image-removebg-preview.jpg');
+    background: hsl(283, 48%, 54%); rgb;
+    width: 100%;
+    height: 974px;
+
+  }
+  .botao {
+    text-align: center;
+    display: block;
+
+    
+  }
+
+
+  .text{
+    text-align: center;
+    padding-block: 33px;
+    display: block;
+  }
+  .foto1{
+    text-align: center;
+    padding-block: 33px;
+    display: block;
+
+  }
+  
+  
+  
+  

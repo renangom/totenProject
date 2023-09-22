@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .titulo img {
+      max-width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="titulo">
+    <img src="../Quiz/titulo.png" alt="Título">
+  </div>
+
+  <div class="container">
+    <div class="loader"></div>
+  </div>
+
+  <div class="quiz-container" id="quiz-container"></div>
+
+  <script>
+    async function pegaPergunta() {
+      try {
+        const resposta = await fetch('http://localhost:3000/perguntas', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        const respostaJson = await resposta.json();
+        console.log(respostaJson);
+
+        return respostaJson;
+      } catch (erro) {
+        console.log('Erro', erro);
+      }
+    }
+
+    async function populatePerguntas() {
+      const perguntas = await pegaPergunta();
+      const quizContainer = document.getElementById('quiz-container');
+
+      perguntas.forEach((pergunta, i) => {
+        const divPergunta = document.createElement('div');
+        divPergunta.classList.add('pergunta');
+
+        const tituloPergunta = document.createElement('p');
+        tituloPergunta.innerHTML = pergunta.pergunta;
+
+        const divAlternativas = document.createElement('div');
+        divAlternativas.classList.add('li');
+
+        pergunta.alternativas.forEach((alternativa, j) => {
+          const inputRadio = document.createElement('input');
+          const liAlternativa = document.createElement('li');
+
+          inputRadio.setAttribute('type', 'radio');
+          liAlternativa.setAttribute('id', `p${i}a${j}`);
+          liAlternativa.innerHTML = alternativa.texto;
+
+          divAlternativas.appendChild(inputRadio);
+          divAlternativas.appendChild(liAlternativa);
+        });
+
+        divPergunta.appendChild(tituloPergunta);
+        divPergunta.appendChild(divAlternativas);
+        quizContainer.appendChild(divPergunta);
+      });
+    }
+
+    populatePerguntas();
+  </script>
+</body>
+</html>

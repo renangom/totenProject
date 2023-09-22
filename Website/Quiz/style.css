@@ -1,0 +1,296 @@
+.titulo{
+    text-align: center;
+    padding-block: 33px;
+    display: block;
+}
+
+
+
+body { 
+
+  background-color: hsl(283, 48%, 54%); 
+
+} 
+
+body h2 {  
+
+  color: white; 
+
+  display: flex; 
+
+  justify-content: center; 
+
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+  font-size: 1000px; 
+
+} 
+
+body h3 {  
+
+  color: white; 
+
+  right: 100%; 
+
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+  font-size: 1000px; 
+
+} 
+
+ 
+ 
+
+.quiz-container { 
+
+  width: 550px; 
+
+  background-color: white; 
+
+  border-radius: 10px; 
+
+  padding: 20px; 
+
+  margin: 0 auto; 
+
+} 
+
+ 
+ 
+
+.pergunta { 
+
+  margin-bottom: 20px; 
+
+} 
+
+ 
+ 
+
+ul { 
+
+  list-style-type: none; 
+
+  padding: 0; 
+
+} 
+
+ 
+ 
+
+li { 
+
+  width: 500px;
+  
+  background-color: rgb(98, 0, 179); 
+
+  border-radius: 10px; 
+
+  padding: 10px; 
+
+  margin-bottom: 10px; 
+
+  color: white; 
+
+  display:inline-flex;
+
+} 
+
+.li:hover{ 
+
+  transform: scale(1.04); 
+
+  transition: .6s; 
+
+} 
+
+ 
+ 
+
+button { 
+
+  margin-top: 10px; 
+
+} 
+
+ 
+ 
+
+.mensagem { 
+
+  font-weight: bold; 
+
+  color: rgb(0, 0, 0); 
+
+  display: flex; 
+
+  justify-content: center; 
+
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+} 
+
+ 
+ 
+
+.container { 
+
+  position: absolute; /* posicionar o container em relação ao yellow-container */ 
+
+  top: 50%; /* centralizar verticalmente */ 
+
+  left: 50%; /* centralizar horizontalmente */ 
+
+  transform: translate(-50%, -50%); /* centralizar completamente */ 
+
+  width: 100%;
+  height: 100%;
+
+  background-color: hsl(283, 48%, 54%); 
+  /* cor de fundo roxa */ 
+
+  animation: fadeOut 0.5s 2s forwards; /* animação de fade out após 4 segundos */ 
+
+} 
+
+ 
+ 
+
+.loader { 
+
+  position: absolute; /* posicionar o círculo de carregamento em relação ao container */ 
+
+  top: 41%; /* centralizar verticalmente */ 
+
+  left: 47%; /* centralizar horizontalmente */ 
+
+  transform: translate(-50%, -50%); /* centralizar completamente */ 
+
+  border: 16px solid #f3f3f3; /* cor do círculo externo */ 
+
+  border-top: 16px solid #3498db; /* cor do círculo de carregamento */ 
+
+  border-radius: 50%; /* formato do círculo */ 
+
+  width: 100px; /* largura do círculo */ 
+
+  height: 100px; /* altura do círculo */ 
+
+  animation: spin 2s linear forwards; /* animação de rotação por 4 segundos */ 
+
+} 
+
+ 
+ 
+
+@keyframes spin { 
+
+  0% { transform: rotate(0deg); } /* ângulo inicial de rotação */ 
+
+  100% { transform: rotate(360deg); } /* ângulo final de rotação */ 
+
+} 
+
+ 
+ 
+
+@keyframes fadeOut { 
+
+  0% { opacity: 1; } /* opacidade inicial */ 
+
+  100% { opacity: 0; display: none; } /* opacidade final e ocultar */ 
+
+} 
+
+ 
+ 
+
+.mensagem { 
+
+  font-family: 'Arial', sans-serif; 
+
+  font-size: 24px; 
+
+  color: rgb(0, 0, 0); 
+
+  animation: blink 1s infinite;} 
+
+ 
+ 
+
+@keyframes blink { 
+
+  0% { 
+
+    opacity: 1; 
+
+  } 
+
+  50% { 
+
+    opacity: 0; 
+
+  } 
+
+  100% { 
+
+    opacity: 1; 
+
+  } 
+
+} 
+
+  
+
+ 
+ 
+
+.menu { 
+
+  position: fixed; 
+
+  top: 50%; 
+
+  left: 50%; 
+
+  transform: translate(-50%, -50%); 
+
+} 
+
+ 
+ 
+
+.menu-item { 
+
+  display: block; 
+
+  width: 100px; 
+
+  height: 100px; 
+
+  background-color: #333; 
+
+  color: #fff; 
+
+  text-align: center; 
+
+  line-height: 100px; 
+
+  border-radius: 50%; 
+
+  margin: 10px; 
+
+  text-decoration: none; 
+
+  transition: background-color 0.3s ease; 
+
+} 
+
+ 
+ 
+
+.menu-item:hover { 
+
+  background-color: #555; 
+
+} 
