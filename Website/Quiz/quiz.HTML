@@ -48,6 +48,7 @@
 
         const tituloPergunta = document.createElement('p');
         tituloPergunta.innerHTML = pergunta.pergunta;
+        tituloPergunta.classList.add('perguntaTitulo')
 
         const divAlternativas = document.createElement('ul'); // Alterado de div para ul
         divAlternativas.classList.add('li');
@@ -55,6 +56,7 @@
         pergunta.alternativas.forEach((alternativa, j) => {
           const inputRadio = document.createElement('input');
           const liAlternativa = document.createElement('li');
+          liAlternativa.classList.add('alternativa')
 
           const inputRadioId = `radio${i}${j}`;
 
