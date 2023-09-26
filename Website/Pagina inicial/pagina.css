@@ -1,34 +1,25 @@
-* {
-    margin: 0;
-    padding: 0;
-  }
-  .header {
-    background-image: url('image-removebg-preview.jpg');
-    background: hsl(283, 48%, 54%); rgb;
-    width: 100%;
-    height: 974px;
+*{
+    margin: 0; /*define que o site ocupará toda a tela do dispositivo*/
+    padding: 0;/*''''''''*/
+ }
 
-  }
-  .botao {
-    text-align: center;
-    display: block;
+.header {
+  background: hsl(283, 48%, 54%); /*cor do fundo do site*/
+  width: 100%; /*define a largura*/
+  height: 974px; /*define a altura*/
+}
 
-    
-  }
-
-
-  .text{
-    text-align: center;
-    padding-block: 33px;
-    display: block;
-  }
-  .foto1{
-    text-align: center;
-    padding-block: 33px;
-    display: block;
-
-  }
+.botao {
+  text-align: center; /*define que o botão "Clique aqui!" ficará no meio*/
+  display: block; /*define que o botão nunca se moverá e sempre estará no centro*/
+}
   
+.titulo{
+  text-align: center; /*define que o título "Venha ver como você fica dançando!"*/
+  padding-block: 33px; /*auxilia na centralização*/
+  display: block; /*a imagem nuca sairá do lugar*/
+}
+
   
   
   
