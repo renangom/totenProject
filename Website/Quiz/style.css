@@ -1,67 +1,34 @@
 .titulo{
-  text-align: center;
-  padding-block: 33px;
-  display: block;
+  text-align: center; /*alinha a imagem "mas antes.. faça esse quiz"*/
+  display: block; /*define que a imagem não irá se mover, não queremos que ela saia do centro nunca*/
 }
 
 body { 
-background-color: hsl(283, 48%, 54%); 
-width: 100%;
-height: 100%;
-} 
-
-body h2 {  
-color: white; 
-display: flex; 
-justify-content: center; 
-font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-font-size: 1000px; 
-} 
-
-body h3 {  
-color: white; 
-right: 100%; 
-font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-font-size: 1000px; 
+background-color: hsl(283, 48%, 54%); /*cor do fundo do site*/
+width: 100%; /*define as dimensões do fundo do site*/
+height: 100%; /*define as dimensões do fundo do site*/
 } 
 
 .quiz-container { 
-width: 550px; 
-background-color: rgb(136, 19, 172); 
-border-radius: 10px; 
-padding: 20px; 
-margin: 0 auto; 
-} 
-
-.pergunta { 
-margin-bottom: 20px; 
+width: 550px; /*define a largura do container - lugarzinho qu as perguntas estão*/
+background-color: rgb(136, 19, 172); /*cor do retâmgulo grande*/
+border-radius: 10px; /*curvinha da borda*/
+padding: 20px; /*distância do título da pergunta até a borda*/
+margin: 0 auto; /*ajuda a centralizar o container*/
 } 
 
 ul {
-list-style-type: none; 
-padding: 0; 
+list-style-type: none; /*organiza as alternativas*/
+padding: 0; /*faz com que a bolinha para selecionar fique ao lado da alternativa*/
 } 
 
 li { 
-width: 500px;
-background-color: hsl(283, 48%, 54%); 
-border-radius: 19px; 
-padding: 10px; 
-margin-bottom: 10px; 
-color: white; 
-display:inline-flex;
-} 
-
-button { 
-margin-top: 10px; 
-} 
-
-.mensagem { 
-font-weight: bold; 
-color: rgb(253, 253, 253); 
-display: flex; 
-justify-content: center; 
-font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+width: 500px; /*define a largura do retângulo pequeno que contém as alternativas*/
+background-color: hsl(283, 48%, 54%); /*define a cor do retângulo*/
+border-radius: 12px; /*define o arredondado da bordinha*/
+padding: 10px; /*distância da borda a alternativa*/
+margin-bottom: 20px; /*define o limite que selecionaremos a alternativa, não precisando clicar exatamente na bolinha*/
+display:inline-flex; /*define que a alternativa e a bolinha de selcionar fiquem exatamente na mesma reta*/
 } 
 
 .container { 
@@ -69,10 +36,9 @@ position: absolute; /* posicionar o container em relação ao yellow-container *
 top: 50%; /* centralizar verticalmente */ 
 left: 50%; /* centralizar horizontalmente */ 
 transform: translate(-50%, -50%); /* centralizar completamente */ 
-width: 100%;
-height: 100%;
-background-color: hsl(283, 48%, 54%); 
-/* cor de fundo roxa */ 
+width: 100%; /*define o tamanho do fundo do carregamento*/
+height: 100%; /*define o tamanho do fundo do carregamento*/
+background-color: hsl(283, 48%, 54%);/* cor de fundo roxa */ 
 animation: fadeOut 0.5s 2s forwards; /* animação de fade out após 4 segundos */ 
 } 
 
@@ -99,60 +65,15 @@ animation: spin 2s linear forwards; /* animação de rotação por 4 segundos */
 100% { opacity: 0; display: none; } /* opacidade final e ocultar */ 
 } 
 
-.mensagem { 
-font-family: 'Arial', sans-serif; 
-font-size: 24px; 
-color: rgb(255, 255, 255); 
-animation: blink 1s infinite;} 
-
-@keyframes blink { 
-0% { 
-  opacity: 1; 
-} 
-50% { 
-  opacity: 0; 
-} 
-100% { 
-  opacity: 1; 
-} 
-} 
-
-.menu { 
-position: fixed; 
-top: 50%; 
-left: 50%; 
-transform: translate(-50%, -50%); 
-} 
-
-.menu-item { 
-display: block; 
-width: 100px; 
-height: 100px; 
-background-color: #ffffff; 
-color: #fff; 
-text-align: center; 
-line-height: 100px; 
-border-radius: 50%; 
-margin: 10px; 
-text-decoration: none; 
-transition: background-color 0.3s ease; 
-} 
-
-.menu-item:hover { 
-background-color: #ffffff; 
-} 
-
 .perguntaTitulo {
-color: #fff;
-font-size: 20px;
-font-weight: 500;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-text-align: center;
+color: #fff; /*cor da pergunta*/
+font-size: 20px; /*tamanho da fonte*/
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; /*fonte que usamos*/
+text-align: center; /*centraliza a pergunta no container*/
 }
 
 .alternativa {
-color: #fff;
-font-size: 18px;
-font-weight: 500;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+color: #fff; /*cor da pergunta*/
+font-size: 18px; /*tamanho da fonte*/
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; /*fonte que usamos*/
 }
