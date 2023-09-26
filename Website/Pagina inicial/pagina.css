@@ -17,7 +17,7 @@
 .titulo{
   text-align: center; /*define que o título "Venha ver como você fica dançando!"*/
   padding-block: 33px; /*auxilia na centralização*/
-  display: block; /*a imagem nuca sairá do lugar*/
+  display: block; /*a imagem nunca sairá do lugar*/
 }
 
   
