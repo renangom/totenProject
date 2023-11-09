@@ -1,0 +1,40 @@
+.divQuestionario {
+    background-color: purple;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    padding: 2%;
+  }
+  
+  .quiz-container {
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .quiz-container h3 {
+    color: purple;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .quiz-container ul {
+    list-style-type: square;
+  }
+  
+  .quiz-container li {
+    font-size: 18px;
+    margin-bottom: 10px;
+    transition: transform 0.2s;
+  }
+  
+  .quiz-container li:hover {
+    transform: scale(1.1);
+  }
+  

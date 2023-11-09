@@ -15,77 +15,124 @@
   <div class="quiz-container" id="quiz-container"></div>
 
   <script>
-    async function pegaPergunta() {
-      try {
-        const resposta = await fetch('http://localhost:3000/perguntas', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-        const respostaJson = await resposta.json();
-        console.log(respostaJson);
+let pontuacaoEstilos = {
+  Ballet: 0,
+  Jazz: 0,
+  Contemporânea: 0,
+  Samba: 0,
+  DançaDoVentre: 0,
+  Forró: 0,
+  Sapateado: 0,
+  Breakdance: 0
+};
 
-        return respostaJson;
-      } catch (erro) {
-        console.log('Erro', erro);
+let perguntaSelecionada = -1;  // Inicialmente, nenhuma pergunta está selecionada
+
+function contabilizarPontuacao(alternativa, perguntaIndex) {
+  // Se nenhuma pergunta foi selecionada, não faça nada
+  if (perguntaSelecionada === -1 || perguntaSelecionada !== perguntaIndex) {
+    console.log('Nenhuma pergunta selecionada ou pergunta já pontuada.');
+    return;
+  }
+
+  // Zera a pontuação para a pergunta atual
+  resetPontuacao();
+
+  // Adiciona a pontuação da alternativa selecionada
+  for (const estilo in alternativa.pontuacao) {
+    if (pontuacaoEstilos.hasOwnProperty(estilo)) {
+      pontuacaoEstilos[estilo] += alternativa.pontuacao[estilo];
+    }
+  }
+
+  console.log('Pontuação atualizada:', pontuacaoEstilos);
+}
+
+function resetPontuacao() {
+  for (const estilo in pontuacaoEstilos) {
+    pontuacaoEstilos[estilo] = 0;
+  }
+}
+
+async function pegaPergunta() {
+  try {
+    const resposta = await fetch('http://localhost:3000/perguntas', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
       }
-    }
+    });
+    const respostaJson = await resposta.json();
+    console.log(respostaJson);
 
-    async function populatePerguntas() {
-      const perguntas = await pegaPergunta();
-      const quizContainer = document.getElementById('quiz-container');
+    return respostaJson;
+  } catch (erro) {
+    console.log('Erro', erro);
+  }
+}
 
-      perguntas.forEach((pergunta, i) => {
-        const inputRadioName = `pergunta${i}`;
-        const divPergunta = document.createElement('div');
-        divPergunta.classList.add('pergunta');
+async function populatePerguntas() {
+  const perguntas = await pegaPergunta();
+  const quizContainer = document.getElementById('quiz-container');
 
-        const tituloPergunta = document.createElement('p');
-        tituloPergunta.innerHTML = pergunta.pergunta;
-        tituloPergunta.classList.add('perguntaTitulo')
+  perguntas.forEach((pergunta, i) => {
+    const inputRadioName = `pergunta${i}`;
+    const divPergunta = document.createElement('div');
+    divPergunta.classList.add('pergunta');
 
-        const divAlternativas = document.createElement('ul'); // Alterado de div para ul
-        divAlternativas.classList.add('li');
+    const tituloPergunta = document.createElement('p');
+    tituloPergunta.innerHTML = pergunta.pergunta;
+    tituloPergunta.classList.add('perguntaTitulo')
 
-        pergunta.alternativas.forEach((alternativa, j) => {
-          const inputRadio = document.createElement('input');
-          const liAlternativa = document.createElement('li');
-          liAlternativa.classList.add('alternativa')
+    const divAlternativas = document.createElement('ul');
+    divAlternativas.classList.add('li');
 
-          const inputRadioId = `radio${i}${j}`;
+    pergunta.alternativas.forEach((alternativa, j) => {
+      const inputRadio = document.createElement('input');
+      const liAlternativa = document.createElement('li');
+      liAlternativa.classList.add('alternativa')
 
-          liAlternativa.addEventListener('click', function () {
-            // Marca o input do tipo rádio correspondente ao li clicado
-            const inputRadio = document.getElementById(inputRadioId);
-            if (inputRadio) {
-              // Desmarca todos os outros inputs de rádio da mesma pergunta
-              const radios = document.querySelectorAll(`input[name="${inputRadioName}"]`);
-              radios.forEach(radio => (radio.checked = false));
+      const inputRadioId = `radio${i}${j}`;
 
-              inputRadio.checked = true;
-              console.log(`Alternativa clicada: ${alternativa.texto}`);
-            }
-          });
+      liAlternativa.addEventListener('click', function () {
+        // Marca o input do tipo rádio correspondente ao li clicado
+        const inputRadio = document.getElementById(inputRadioId);
+        if (inputRadio) {
+          // Desmarca todos os outros inputs de rádio da mesma pergunta
+          const radios = document.querySelectorAll(`input[name="${inputRadioName}"]`);
+          radios.forEach(radio => (radio.checked = false));
 
-          inputRadio.setAttribute('type', 'radio');
-          inputRadio.setAttribute('id', inputRadioId);
-          inputRadio.setAttribute('name', inputRadioName); // Define o nome para agrupar os inputs
-          liAlternativa.setAttribute('id', `p${i}a${j}`);
-          liAlternativa.setAttribute('for', inputRadioId);
-          liAlternativa.innerHTML = alternativa.texto;
-
-          divAlternativas.appendChild(inputRadio);
-          divAlternativas.appendChild(liAlternativa);
-        });
-
-        divPergunta.appendChild(tituloPergunta);
-        divPergunta.appendChild(divAlternativas);
-        quizContainer.appendChild(divPergunta);
+          inputRadio.checked = true;
+          console.log(`Alternativa clicada: ${alternativa.texto}`);
+          perguntaSelecionada = i;  // Atualiza a pergunta selecionada
+          resetPontuacao();  // Zera a pontuação para a pergunta selecionada
+        }
       });
-    }
 
-    populatePerguntas();
+      inputRadio.addEventListener('click', function (event) {
+        event.stopPropagation(); // Para evitar que o evento de clique em li seja chamado
+        contabilizarPontuacao(alternativa, i); // Contabiliza a pontuação
+      });
+
+      inputRadio.setAttribute('type', 'radio');
+      inputRadio.setAttribute('id', inputRadioId);
+      inputRadio.setAttribute('name', inputRadioName);
+      liAlternativa.setAttribute('id', `p${i}a${j}`);
+      liAlternativa.setAttribute('for', inputRadioId);
+      liAlternativa.innerHTML = alternativa.texto;
+
+      divAlternativas.appendChild(inputRadio);
+      divAlternativas.appendChild(liAlternativa);
+    });
+
+    divPergunta.appendChild(tituloPergunta);
+    divPergunta.appendChild(divAlternativas);
+    quizContainer.appendChild(divPergunta);
+  });
+}
+
+populatePerguntas();
+
 
 
   </script> <!--Fim do js-->

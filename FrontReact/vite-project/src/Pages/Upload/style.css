@@ -1,0 +1,89 @@
+.paginaUpload {
+    background-color: purple;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100vw;
+  }
+  
+  .upload-container {
+    background-color: white;
+    width: 50%;
+    color: black;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    animation: fadeIn 0.5s;
+  }
+  
+  .result-title {
+    color: purple;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .result-list {
+    list-style-type: square;
+  }
+  
+  .result-item {
+    font-size: 18px;
+    margin-bottom: 10px;
+    transition: transform 0.2s;
+    list-style: none;
+  }
+  
+  .result-item:hover {
+    transform: scale(1.1);
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+
+  /* style.css */
+/* ... Outros estilos ... */
+
+.result-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .result-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: center;
+  }
+  
+  .result-text {
+    flex: 1;
+    color: #333;
+  }
+  
+  .result-bar {
+    width: 100px; /* Ajuste o tamanho da barra conforme necessário */
+    height: 10px;
+    flex: 1;
+    background-color: #f1f1f1; /* Cor de fundo da barra */
+    border-radius: 5px;
+    margin-left: 10px;
+  }
+  
+  .bar-fill {
+    height: 100%;
+    border-radius: 5px;
+    background-color: #4caf50; /* Cor da barra preenchida (verde) */
+    transition: width 0.5s;
+  }
+  
